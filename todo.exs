@@ -1,5 +1,5 @@
 defmodule TodoList do
-  @filename "infos.txt" #File where the last password is saved
+  @filename "infos.txt" #File where the tasks are saved
 
   def init do
     unless File.exists?(@filename) do
