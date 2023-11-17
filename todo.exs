@@ -1,6 +1,12 @@
 defmodule TodoList do
-  @filename "list.txt" #File where the last password is saved
+  @filename "infos.txt" #File where the last password is saved
 
+  def init do
+    unless File.exists?(@filename) do
+      File.write!(@filename, "")
+    end
+  end
+  
   def run do
     IO.puts("  [1] - Add an item
   [2] - Display all items
@@ -16,13 +22,17 @@ defmodule TodoList do
 
       1 ->
         IO.puts("Enter the task you want to record:")
-        {:ok, file} = File.read(@filename)
-        content = if file == "", do: String.trim(IO.gets("")), else: file <> "\n" <> String.trim(IO.gets("")) 
-        File.write(@filename, content)
-        IO.puts("Task added successfully")
-        Process.sleep(5000)
-        IO.puts("\e[H\e[2J")
-        TodoList.run
+
+          case File.read(@filename) do 
+            {:ok, file} -> content = if file == "", do: String.trim(IO.gets("")), else: file <> "\n" <> String.trim(IO.gets(""))
+          
+              File.write(@filename, content)
+              IO.puts("Task added successfully")
+              Process.sleep(5000)
+              IO.puts("\e[H\e[2J")
+              TodoList.run
+              
+          end
 
       2 ->
         File.read!(@filename)
@@ -31,6 +41,7 @@ defmodule TodoList do
         IO.puts("-------------------------")
         Process.sleep(3000)
         TodoList.run
+        
       3 ->
         {:ok, lines} = File.read(@filename)
         IO.puts("Which line do you want to delete:")
@@ -49,6 +60,9 @@ defmodule TodoList do
               :ok -> IO.puts("Line deleted")
               {:error} -> IO.puts("Error")
             end
+
+            Process.sleep(3000)
+            TodoList.run
         end
       4 ->
         File.write!(@filename, "")
@@ -71,4 +85,5 @@ defmodule TodoList do
 end
 
 IO.puts("\e[H\e[2J")
+TodoList.init
 TodoList.run
