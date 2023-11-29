@@ -22,7 +22,7 @@ Exemple:
 
     1
     Enter the task you want to record:
-    Make pasta for tonight
+    Make pasta for tonight (Prompt)
     Task added successfully
 
     2
@@ -31,6 +31,7 @@ Exemple:
 
     3
     Which line do you want to delete:
+
     1
     Line deleted
 
