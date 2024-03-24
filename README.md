@@ -14,28 +14,36 @@ Exemple:
 ```
     [1] - Add an item
     [2] - Display all items
-    [3] - Delete an item
-    [4] - Delete all items
+    [3] - Modify an item
+    [4] - Delete an item
+    [5] - Delete all items
     [0] - Quit
 
     Option:
 
-    1
+      1
     Enter the task you want to record:
-    Make pasta for tonight (Prompt)
+      Make pasta for tonight
     Task added successfully
 
-    2
+      2
     Make pasta for tonight
     ------------------------
 
-    3
-    Which line do you want to delete:
+      3
+    Which ID/line do you want to modify:
+      1
+    Current line content: zzzz
+    Enter new content for this line:
+      Get a new smartphone
+    Line modified successfully.
 
-    1
+      4
+    Which line do you want to delete:
+      1
     Line deleted
 
-    4
+      5
     All tasks have been deleted..
     
 ```
